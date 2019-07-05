@@ -39,12 +39,17 @@ public class SearchResultActivity extends AppCompatActivity {
             horizontalRecyclerView.setAdapter(adapter);
 
             for (int i=0;i<imageUrls.size();i++){
-              new GetImageBitmap().execute(imageUrls.get(i));
+              new GetImageBitmap(i).execute(imageUrls.get(i));
             }
 
         }
 
     private class GetImageBitmap extends AsyncTask<String, Integer, String> {
+        int i;
+         GetImageBitmap(int i) {
+            this.i = i;
+        }
+
         public String doInBackground(String... urls) {
             try {
                 URL url = new URL(urls[0]);
@@ -55,7 +60,7 @@ public class SearchResultActivity extends AppCompatActivity {
             return null;
         }
         public void onPostExecute(String result) {
-            adapter.notifyDataSetChanged();
+            adapter.notifyItemChanged(i);
         }
     }
 
