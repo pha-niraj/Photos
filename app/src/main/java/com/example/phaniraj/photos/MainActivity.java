@@ -90,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
                  }
                  else {
                      goButton.setEnabled(true);
-                     Toast.makeText(MainActivity.this, "Search Limit Exceeded", Toast.LENGTH_SHORT).show();
                  }
                  progressBar.setVisibility(View.GONE
                  );
